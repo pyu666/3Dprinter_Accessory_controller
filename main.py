@@ -100,15 +100,15 @@ class Application(tkinter.Frame):
 
     def ask_power_off(self):
         if ask_power_info():
+            ser.write(bytes("m",'utf-8'))
             print("true")
 #見つからなかった時のメッセージボックス
 def not_found():
     messagebox.showerror("デバイスが見つかりませんでした")
-
+#3Dプリンタの電源を切る時に確認するダイアログ
 def ask_power_info():
     pw = messagebox.askyesno('確認','主電源をOFFにしますか')
     return pw
-#3Dプリンタの電源を切る時に確認する
 app=Application(master=top)
 #ウィンドウの生成
 app.mainloop()
